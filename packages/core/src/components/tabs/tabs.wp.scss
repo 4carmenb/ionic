@@ -114,22 +114,22 @@ $tabs-wp-tab-icon-size:                 2.4rem !default;
   color: $tabs-wp-tab-icon-color-active;
 }
 
-.tabs-wp[tabsLayout=icon-bottom] .tab-button {
+.tabs-wp .layout-icon-bottom .tab-button {
   @include padding(8px, null, 8px, null);
 }
 
-.tabs-wp[tabsLayout=icon-end] .tab-button,
-.tabs-wp[tabsLayout=icon-start] .tab-button {
+.tabs-wp .layout-icon-end .tab-button,
+.tabs-wp .layout-icon-start .tab-button {
   @include padding(null, null, 10px, null);
 }
 
-.tabs-wp[tabsLayout=icon-end] .tab-button ion-icon,
-.tabs-wp[tabsLayout=icon-start] .tab-button ion-icon {
+.tabs-wp .layout-icon-end ion-icon,
+.tabs-wp .layout-icon-start ion-icon {
   min-width: 24px;
 }
 
-.tabs-wp[tabsLayout=icon-hide] .tab-button,
-.tabs-wp[tabsLayout=title-hide] .tab-button,
+.tabs-wp .layout-icon-hide .tab-button,
+.tabs-wp .layout-title-hide .tab-button,
 .tabs-wp .tab-button.icon-only,
 .tabs-wp .tab-button.has-title-only {
   @include padding(6px, 10px);
@@ -141,13 +141,14 @@ $tabs-wp-tab-icon-size:                 2.4rem !default;
 
 @mixin tabbar-wp($color-name, $color-base, $color-contrast) {
 
-  .tabs-wp-#{$color-name} .tabbar {
+  .tabs-wp-#{$color-name} ion-tabbar {
     background-color: $color-base;
   }
 
-  .tabs-wp-#{$color-name} .tab-button,
-  .tabs-wp-#{$color-name} .tab-button-icon {
+  .tabs-wp-#{$color-name} .tab-button {
     color: rgba($color-contrast, $tabs-wp-tab-opacity);
+
+    fill: rgba($color-contrast, $tabs-wp-tab-opacity);
   }
 
   .tabs-wp-#{$color-name} .tab-button:hover:not(.disable-hover),
@@ -163,6 +164,10 @@ $tabs-wp-tab-icon-size:                 2.4rem !default;
 
 // Windows Tabbar Color Generation
 // --------------------------------------------------
+
+ion-tab-highlight {
+  background: $tabs-wp-tab-color-active;
+}
 
 @each $color-name, $color-base, $color-contrast in get-colors($colors-wp) {
   @include tabbar-wp($color-name, $color-base, $color-contrast);
